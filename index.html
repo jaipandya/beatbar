@@ -1,0 +1,166 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <title>Beatbar - Media player inside the browser address bar</title>
+  <meta name="description" content="">
+  <meta name="author" content="Jai Pandya">
+
+  <meta name="viewport" content="width=device-width">
+
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- open graph meta tags -->
+  <meta property="og:title" content="Beatbar - media player inside the browser address bar" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://jaipandya.github.com/beatbar" />
+  <meta property="og:image" content="http://jaipandya.github.com/beatbar/img/facebook.jpg" />
+  
+  <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <!-- include SM2 library -->
+  <script type="text/javascript" src="js/libs/soundmanager/soundmanager2.js"></script>
+  <script src="js/libs/keymaster.js"></script>
+
+  <!-- Initialize soundManager -->
+  <script type="text/javascript">
+    soundManager.url = 'swf/';
+    soundManager.flashVersion = 9; // optional: shiny features (default = 8)
+    soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+    soundManager.debugFlash = false;
+    soundManager.debugMode = false;
+    soundManager.useConsole = true;
+  </script>
+  <script src="js/script.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js" type="text/JavaScript"></script>
+  <script type="text/JavaScript">
+    // Initialize SoundCloud API
+    // Get some tracks
+    // Initialize Beatbar with the returned array of track URLs
+    var tracks, beatbar;
+    SC.initialize({
+      client_id: "04dd99b58b8be275394ad3ca3dd660e4"
+    });
+    SC.get('/tracks', {
+        'tags':'country',
+        'filter':'public,streamable',
+        'order':'hotness',
+        'bpm[to]':120,
+        'duration[to]':80000
+      }, function(data){
+        tracks = $.map(data, function(track, i){
+          return track.stream_url + '?client_id=' + SC.options.client_id;
+        });
+        soundManager.onready(function() {
+          beatbar = new Beatbar();
+        });
+      }
+    );
+    $(document).ready(function(){
+      $('#play-button').click(function(){
+        var config = {
+          playlist : tracks
+        };
+        beatbar.init(config);
+        $(this).addClass('disabled');
+      })
+    });
+  </script>
+  <!-- Google analytics tracking code -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3405077-23']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class='masthead'>
+      <img id='arrow' src='img/arrow.jpg' width='174' height='199' />
+      <div class="intro">
+       <a id='play-button' class="btn btn-large btn-success" href="#">Start playing</a>
+       <h1>Beatbar</h1>
+       <p>Media player inside the browser address bar</p>
+      </div>
+      <img src='img/screenshot.jpg' width='1140' height='294' />
+    </div>
+    <div class="description row">
+      <div class='span8 offset2'>
+        <h2>Usage</h1>
+        <p>
+          The big ‘O’ inside the address bar represents the current mouse position. 
+          Move the mouse pointer on the document to left and right to move O in the corresponding directions. 
+          When it is over controls, click the mouse button to take an action.<br />
+        </p>
+        <h2>Keyboard shortcuts</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="label">p / k</span></td>
+              <td>Previous</td>
+            </tr>
+            <tr>
+              <td><span class="label">n / j</span></td>
+              <td>Next</td>
+            </tr>
+            <tr>
+              <td><span class="label">Space</span></td>
+              <td>Play / Pause</td>
+            </tr>
+            <tr>
+              <td><span class="label">Right</span></td>
+              <td>Seek forward by 5 seconds</td>
+            </tr>
+            <tr>
+              <td><span class="label">Left</span></td>
+              <td>Seek backward by 5 seconds</td>
+            </tr>
+            <tr>
+              <td><span class="label">Up / Down</span></td>
+              <td>Increase / Decrease volume</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>FAQs</h2>
+        <p class='faq'>
+          <strong>Q</strong>: How does it work?<br />
+          <strong>A</strong>: Beatbar uses <a href="http://www.schillmania.com/projects/soundmanager2/">soundManager</a> awesomeness to play audio. Using HTML5 and Flash, SoundManager 2 provides reliable cross-platform audio under a single JavaScript API. The player streams audio from <a href="http://soundcloud.com">SoundCloud</a> using their JS SDK.<br />
+        </p>
+        
+        <p class='faq'>
+          <strong>Q</strong>: Why inside address bar?<br />
+          <strong>A</strong>: Because <a href="http://twitter.com/cameronmcefee">@cameronmcefee</a> and <a href="http://twitter.com/probablycorey">@probablycorey</a> had left this experiment for me. (Read <a href="http://cameronmcefee.com/parallax-url">parallex URL</a> and <strong>URL hunter</strong>)
+        </p>
+      </div>
+    </div>
+    <div class="footer">
+      <p>
+      <a href="http://jai.im">Jai Pandya</a> | <a href='http://github.com/jaipandya'>Fork me on github</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
