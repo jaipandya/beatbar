@@ -1,0 +1,128 @@
+body {
+ font: 13px/1.231 sans-serif;
+}
+
+.masthead{
+  text-align: center;
+}
+
+#play-button{
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.masthead h1, .masthead p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.masthead img{
+  display:block;
+  margin: 0 auto;
+}
+
+.intro h1, .description h2{
+  color: rgb(87, 71, 66);
+  margin: 36px 0 27px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.intro h1{
+  margin-top: 18px;
+}
+
+.description h2{
+  font-size: 25px;
+}
+
+.intro p, .description p{
+  margin-bottom: 18px;
+  font-weight: 200;
+  line-height: 1.7;
+  color: #574742;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.intro p{
+  font-size: 20px;
+  text-align: center;
+}
+
+.description p{
+  font-size: 15px;
+  text-align: left;
+}
+
+span.label {
+  text-transform: none;
+}
+
+.social {
+  margin-bottom: 20px
+}
+
+.fblike {
+  margin-right: 0;
+}
+
+.tweetbutton {
+  margin-left: 0;
+}
+
+#arrow {
+  position: relative;
+  -webkit-animation: updown .5s alternate 20 linear;
+  -moz-animation: updown .5s alternate 20 linear;
+}
+
+@-webkit-keyframes updown {
+  from {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  to {
+    position: relative;
+    left: 0px;
+    top: 10px;
+  }
+}
+
+@-moz-keyframes updown {
+  from {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  to {
+    position: relative;
+    left: 0px;
+    top: 10px;
+  }
+}
+
+.faq {
+  margin: 30px 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  border-top: 1px solid #ddd;
+}
+
+.footer p{
+  color: #999;
+}
+
+.footer p a{
+  color: #62a0bf;
+}
