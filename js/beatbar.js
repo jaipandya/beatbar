@@ -72,7 +72,8 @@
         key('p, k', function(){
           self.playPrevious();
         });
-        key('space', function(){
+        key('space', function(e){
+          e.preventDefault();
           self.togglePlay();
         });
         key('right', function(){
@@ -84,10 +85,12 @@
         key('home 0', function(){
           self.seekToBeginning();
         });
-        key('up', function(){
+        key('up', function(e){
+          e.preventDefault();
           self.increaseVolume();
         });
-        key('down', function(){
+        key('down', function(e){
+          e.preventDefault();
           self.decreaseVolume();
         });
       });
