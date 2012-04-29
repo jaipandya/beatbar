@@ -65,6 +65,18 @@ span.label {
   text-transform: none;
 }
 
+.social {
+  margin-bottom: 20px
+}
+
+.fblike {
+  margin-right: 0;
+}
+
+.tweetbutton {
+  margin-left: 0;
+}
+
 #arrow {
   position: relative;
   -webkit-animation: updown .5s alternate 20 linear;

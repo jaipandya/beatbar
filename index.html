@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html xmlns:fb="http://ogp.me/ns/fb#">
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -91,12 +91,31 @@
   </script>
 </head>
 <body>
+  <!-- facebook SDK-->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=230145113756041";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <!-- twitter SDK -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   <div class="container">
     <div class='masthead'>
       <img id='arrow' src='img/arrow.jpg' width='174' height='199' />
       <div class="intro">
        <a id='play-button' class="btn btn-large btn-success" href="#">Start playing</a>
        <h1>Beatbar</h1>
+       <div class='social row'>
+         <div class='span1 offset5 fblike'>
+           <fb:like send="false" layout="button_count" width="200" show_faces="false"></fb:like>
+         </div>
+         <div class='span1 tweetbtton'>
+           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jaipandya.github.com/beatbar" data-text="Beatbar - a media player inside the browser address bar" data-via="jaipandya" data-related="jaipandya">Tweet</a>
+         </div>
+       </div>
        <p>Media player inside the browser address bar</p>
       </div>
       <img src='img/screenshot.jpg' width='1140' height='294' />
