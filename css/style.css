@@ -113,6 +113,12 @@ span.label {
   margin: 30px 0;
 }
 
+.hn {
+  color: orange;
+  text-align: center;
+  padding-top: 50px;
+}
+
 .footer {
   text-align: center;
   padding: 40px;

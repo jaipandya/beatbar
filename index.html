@@ -53,10 +53,10 @@
       client_id: "04dd99b58b8be275394ad3ca3dd660e4"
     });
     SC.get('/tracks', {
-        'tags':'country',
         'filter':'public,streamable',
         'order':'hotness',
         'bpm[to]':120,
+        'q':'love',
         'duration[to]':80000
       }, function(data){
         tracks = $.map(data, function(track, i){
@@ -180,6 +180,9 @@
           <strong>Q</strong>: Source code?<br />
           <strong>A</strong>: Check out <a href="http://jaipandya.github.com/beatbar/docs/beatbar.html">annotated source code</a> or explore it on <a href="http://github.com/jaipandya/beatbar">github</a>.
         </p>
+      </div>
+      <div class='span8 offset2 hn'>
+        <em>Check HN discussion at <a href='http://news.ycombinator.com/item?id=3905318'>http://news.ycombinator.com/item?id=3905318</a></em>
       </div>
     </div>
     <div class="footer">
