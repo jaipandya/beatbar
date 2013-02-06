@@ -53,10 +53,10 @@
       client_id: "04dd99b58b8be275394ad3ca3dd660e4"
     });
     SC.get('/tracks', {
-        'tags':'country',
         'filter':'public,streamable',
         'order':'hotness',
         'bpm[to]':120,
+        'q':'love',
         'duration[to]':80000
       }, function(data){
         tracks = $.map(data, function(track, i){
