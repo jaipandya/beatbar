@@ -56,3 +56,6 @@ Credits
 -------
 
 [SoundManager](http://www.schillmania.com/projects/soundmanager2/) for for making audio no pain inside the browser.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jaipandya/beatbar/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
